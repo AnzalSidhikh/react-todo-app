@@ -1,4 +1,4 @@
-import update from 'immutability-helper';
+import update from "immutability-helper";
 
 /**
  * Get the list of todo items.
@@ -8,34 +8,40 @@ export function getAll() {
     return [
         {
             id: 1,
-            text: 'Learn Javascript',
-            completed: false
+            text: "Learn Javascript",
+            completed: false,
+            priority: "medium",
+            dueDate: "2024-12-07",
         },
         {
             id: 2,
-            text: 'Learn React',
-            completed: false
+            text: "Learn React",
+            completed: false,
+            priority: "high",
+            dueDate: "2024-12-04",
         },
         {
             id: 3,
-            text: 'Build a React App',
-            completed: false
-        }
-    ]
+            text: "Build a React App",
+            completed: false,
+            priority: "low",
+            dueDate: "2024-12-01",
+        },
+    ];
 }
 
 export function getItemById(itemId) {
-    return getAll().find(item => item.id === itemId);
+    return getAll().find((item) => item.id === itemId);
 }
 
 export function updateStatus(items, itemId, completed) {
-    let index = items.findIndex(item => item.id === itemId);
+    let index = items.findIndex((item) => item.id === itemId);
 
     // Returns a new list of data with updated item.
     return update(items, {
         [index]: {
-            completed: {$set: completed}
-        }
+            completed: { $set: completed },
+        },
     });
 }
 
@@ -58,9 +64,12 @@ function getNextId() {
  * @return {Array}
  */
 export function addToList(list, data) {
-    let item = Object.assign({
-        id: getNextId()
-    }, data);
+    let item = Object.assign(
+        {
+            id: getNextId(),
+        },
+        data
+    );
 
     return list.concat([item]);
 }

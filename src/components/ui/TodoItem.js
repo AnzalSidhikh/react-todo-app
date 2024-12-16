@@ -10,7 +10,7 @@ export default function TodoItem(props) {
         <li className={className}>
             <div className="checkbox">
                 <label>
-                    <CheckBox checked={data.completed} onChange={handleChange}/> {data.text}
+                    <CheckBox checked={data.completed} onChange={handleChange}/> {data.text} {data.priority} {data.dueDate}
                 </label>
             </div>
         </li>
